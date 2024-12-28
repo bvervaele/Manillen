@@ -47,6 +47,31 @@ namespace Manillen.Service.Hubs
             await Clients.Groups("TicTactToeHub").SendAsync("OnlineUsers", onlineUsers);
         }
 
+        public async Task DisplayPrivateRoomUsers(string roomCode)
+        {
+            var privateRoomUsers = _userConnectionService.GetPrivateRoomUsers(roomCode);
+            await Clients.Groups(roomCode).SendAsync("PrivateRoomUsers", privateRoomUsers);
+        }
+
+        public async Task CreatePrivateRoomRequest(MessageDto message)
+        {
+            if (message != null)
+            {
+                string privateRoomCode = GetPrivateGroupRoomCode();
+                await Groups.AddToGroupAsync(Context.ConnectionId, privateRoomCode);
+
+                _userConnectionService.SetOnlineUserInPrivateRoom(message.From);
+
+                _userConnectionService.SetPrivateRoom(privateRoomCode, message.From);
+
+                await DisplayOnlineUsers();
+
+                await Clients.Client(Context.ConnectionId).SendAsync("OpenPrivateRoomRequest", privateRoomCode);
+
+                await DisplayPrivateRoomUsers(privateRoomCode);
+            }
+        }
+
         public async Task InviteToPrivateRoomRequest(MessageDto message)
         {
             var requestUserConnectionId = _userConnectionService.GetUserConnectionByUser(message.To);
@@ -56,14 +81,16 @@ namespace Manillen.Service.Hubs
             }
         }
 
-        public async Task JoinPrivateRoomRequest(MessageDto message)
+        public async Task AcceptPrivateRoomRequest(MessageDto message)
         {
             if (message != null)
             {
                 await Groups.AddToGroupAsync(Context.ConnectionId, message.Content);
                 _userConnectionService.AddUserToPrivateRoom(message.Content, message.From);
-                var partyUsers = Clients.Group(message.Content);
-                await Clients.Groups(message.Content).SendAsync("JoinPrivateRoom", partyUsers);
+                _userConnectionService.SetOnlineUserInPrivateRoom(message.From);
+                await Clients.Client(Context.ConnectionId).SendAsync("OpenPrivateRoomRequest", message.Content);
+                DisplayOnlineUsers();
+                DisplayPrivateRoomUsers(message.Content);
             }
         }
 
@@ -77,21 +104,16 @@ namespace Manillen.Service.Hubs
             }
         }
 
-        public async Task CreatePrivateRoomRequest(MessageDto message)
+        public async Task JoinPrivateRoomRequest(MessageDto message)
         {
             if (message != null)
             {
-                string privateRoomName = GetPrivateGroupRoom();
-                await Groups.AddToGroupAsync(Context.ConnectionId, privateRoomName);
-
+                await Groups.AddToGroupAsync(Context.ConnectionId, message.Content);
+                _userConnectionService.AddUserToPrivateRoom(message.Content, message.From);
                 _userConnectionService.SetOnlineUserInPrivateRoom(message.From);
-
-                _userConnectionService.SetPrivateRoom(privateRoomName, message.From);
-
-                await DisplayOnlineUsers();
-
-                // open private room
-                await Clients.Client(Context.ConnectionId).SendAsync("OpenPrivateRoom", message);
+                await Clients.Client(Context.ConnectionId).SendAsync("OpenPrivateRoomRequest", message.Content);
+                DisplayOnlineUsers();
+                DisplayPrivateRoomUsers(message.Content);
             }
         }
 
@@ -119,7 +141,7 @@ namespace Manillen.Service.Hubs
         //    }
         //}
 
-        private string GetPrivateGroupRoom()
+        private string GetPrivateGroupRoomCode()
         {
             const string allowedChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
             const int codeLength = 6;

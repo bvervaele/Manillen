@@ -33,6 +33,8 @@ export const signalRConnectionReducer = (state:SignalRState, action:Action) : Si
                 privateRoomMsg:{from:'',to:'',position:0}};
         case 'SET_ONLINE_USERS':
             return {...state, onlineUsers:action.payload};
+        case 'SET_PRIVATE_ROOM_USERS':
+            return {...state, privateRoomUsers:action.payload};
         case 'REQUEST_PRIVATE_ROOM':
             return {...state, privateRoomRequest:true,message:action.payload};
         case 'REJECT_PRIVATE_ROOM_REQUEST':
@@ -48,7 +50,7 @@ export const signalRConnectionReducer = (state:SignalRState, action:Action) : Si
         case 'PRIVATE_ROOM_MESSAGE':
             return {...state, privateRoomMsg: action.payload}
         case 'CREATE_PRIVATE_ROOM_REQUEST':
-            return {...state,privateRoomRequest:true,createPrivateRoomRequest:action.payload};
+            return {...state,privateRoomCode:action.payload};
         default:
             return state;
     }

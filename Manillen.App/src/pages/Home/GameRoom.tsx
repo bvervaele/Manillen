@@ -3,32 +3,42 @@ import { GlobleContext } from '../../context/Context'
 import { Button } from 'react-bootstrap';
 
 const GameRoom: React.FC = () => {
-  const { userState: { username }, signalRState: { signalRService, onlineUsers } } = useContext(GlobleContext);
-  const [isRoomCreated, setIsRoomCreated] = useState(false);
+  const { userState: { username }, signalRState: { signalRService, privateRoomCode, privateRoomUsers } } = useContext(GlobleContext);
   
-  const handlePartyUsers = () => {
-    return onlineUsers.filter(user => user.key !== username);
-  };
-
   const handleCreateRoom = async () => {
     signalRService?.createPrivateRoomRequest({
       from: username, to: '', content: 'Create Private Room Request'
     });
-    setIsRoomCreated(true);
   };
 
-  if (!isRoomCreated) {
+  const handleJoinRoom = async () => {
+    signalRService?.joinPrivateRoomRequest({
+      from: username, to: '', content: roomCodeInput
+    });
+  };
+
+  const [roomCodeInput, setRoomCodeInput] = useState('');
+  
+  const inPrivateRoom = () => {
+    return privateRoomCode !== "";
+  }
+
+  if (!inPrivateRoom()) {
     return (
-      <Button onClick={() => handleCreateRoom()}>Create Room</Button>
+      <>
+        <input type="text" value={roomCodeInput} onChange={(e) => setRoomCodeInput(e.target.value)} />
+        <Button onClick={() => handleJoinRoom()}>Join Room</Button>
+        <Button onClick={() => handleCreateRoom()}>Create Room</Button>
+      </>
     )
   }
   return (
     <div>
-      <h2>Room Code: 123abc</h2>
+      <h2>Room Code: {privateRoomCode}</h2>
       <h3>Players:</h3>
       <ul>
-        {handlePartyUsers().map((user, index) => (
-          <li key={index}>{user.value}</li>
+        {privateRoomUsers.map((user, index) => (
+          <li key={index}>{user}</li>
         ))}
       </ul>
     </div>

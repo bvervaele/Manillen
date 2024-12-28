@@ -21,7 +21,8 @@ const initialSignalRStatus: SignalRState = {
     privateRoomInitiated:{requested:'',accepted:''},
     message:{from:'',to:'',content:''},
     privateRoomMsg:{from:'',to:'',position:0},
-    createPrivateRoomRequest:{from:'',to:'',content:''}
+    privateRoomCode:"",
+    privateRoomUsers:[],
 }
 
 

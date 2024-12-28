@@ -20,7 +20,8 @@ export interface SignalRState {
     privateRoomInitiated:{requested:string; accepted:string}
     message:Message;
     privateRoomMsg:PrivateRoomMessage;
-    createPrivateRoomRequest:Message;
+    privateRoomCode:string;
+    privateRoomUsers:string[];
 }
 
 export interface Message {

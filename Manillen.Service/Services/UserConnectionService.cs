@@ -125,6 +125,14 @@
             }
         }
 
+        public List<string> GetPrivateRoomUsers(string key)
+        {
+            lock (PrivateRooms)
+            {
+                 return PrivateRooms[key];
+            }
+        }
+
         public void AddUserToPrivateRoom(string key, string user)
         {
             if (!PrivateRooms.ContainsKey(key))

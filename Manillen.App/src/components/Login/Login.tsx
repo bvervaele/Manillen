@@ -151,7 +151,7 @@ const Login: React.FC<{register?:boolean}> = ({register = false}) => {
                 <div className='d-flex flex-row justify-content-around align-items-center'>
                     <div>
                         <h2 className='text-center text-dark mt-1'>{register ? 'Register Form' : 'Login Form'}</h2>
-                        <div className='text-center mb-1 text-dark'>Tic Tact Toe</div>
+                        <div className='text-center mb-1 text-dark'>Manillen</div>
                     </div>
                     <div className='card my-2 p-1' style={{minWidth:'25rem'}}>
                         <form className='card-body p-lg-2' onSubmit={(e)=> handleSubmit(e)}>

@@ -23,9 +23,9 @@ export class SignalRService {
             this.dispach({type:'SET_ONLINE_USERS', payload:onlineusers});
         });
 
-        this.signalRConnection?.on('OnlineUsers', (onlineusers: OnlineUser[]) => {
+        this.signalRConnection?.on('PrivateRoomUsers', (privateRoomUsers: string[]) => {
             // console.log(onlineusers);
-            this.dispach({type:'SET_ONLINE_USERS', payload:onlineusers});
+            this.dispach({type:'SET_PRIVATE_ROOM_USERS', payload:privateRoomUsers});
         });
 
         this.signalRConnection?.on('InviteToPrivateRoomRequest', (message:Message) => {
@@ -38,7 +38,7 @@ export class SignalRService {
             // console.log(message);
         });
 
-        this.signalRConnection?.on('CreatePrivateRoomRequest', (message:Message) => {
+        this.signalRConnection?.on('OpenPrivateRoomRequest', (message:Message) => {
             this.dispach({type:'CREATE_PRIVATE_ROOM_REQUEST', payload:message});
             // console.log(message);
         });
@@ -69,8 +69,8 @@ export class SignalRService {
         return await this.signalRConnection?.invoke('InviteToPrivateRoomRequest', message).catch(error => console.log(error));
     }
     
-    async JoinPrivateRoomRequest (message:Message){
-        return await this.signalRConnection?.invoke('JoinPrivateRoomRequest', message).catch(error => console.log(error));
+    async AcceptPrivateRoomRequest (message:Message){
+        return await this.signalRConnection?.invoke('AcceptPrivateRoomRequest', message).catch(error => console.log(error));
     }
 
     async rejectPrivateRoomRequest (message:Message){
@@ -90,7 +90,11 @@ export class SignalRService {
     }
 
     async createPrivateRoomRequest(message:Message){
-        console.error("test")
         return await this.signalRConnection?.invoke('CreatePrivateRoomRequest', message).catch(error => console.log(error));
+    }
+
+    async joinPrivateRoomRequest(message:Message){
+        console.log("test");
+        return await this.signalRConnection?.invoke('JoinPrivateRoomRequest', message).catch(error => console.log(error));
     }
 }

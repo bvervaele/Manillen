@@ -262,3 +262,7 @@ $RECYCLE.BIN/
 .DS_Store
 
 _NCrunch*
+
+#
+Manillen.Service/.vs/
+Properties

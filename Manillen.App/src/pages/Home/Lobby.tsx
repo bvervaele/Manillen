@@ -4,14 +4,15 @@ import { Button } from 'react-bootstrap';
 import GameRoom from './GameRoom';
 
 const Play: React.FC = () => {
-  const { userState: { username }, signalRState: { signalRService, onlineUsers, createPrivateRoomRequest } } = useContext(GlobleContext);
+  const { userState: { username }, signalRState: { signalRService, onlineUsers, privateRoomCode} } = useContext(GlobleContext);
 
   const handleOnlineUsers = () => {
     return onlineUsers.filter(user => user.key !== username);
   }
 
   const handlePrivateRoomRequest = (user: string)=> {
-    signalRService?.privateRoomRequest({from:username,to:user,content:createPrivateRoomRequest.content});
+    if(privateRoomCode !== "")
+      signalRService?.privateRoomRequest({from:username,to:user,content:privateRoomCode});
   }
 
   return (

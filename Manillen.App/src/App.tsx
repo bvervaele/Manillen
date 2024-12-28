@@ -18,7 +18,7 @@ function App() {
 
   const handleAccept = () => {
     setShow(false);
-    signalRService?.JoinPrivateRoomRequest({ from: username, to: message.from, content: message.content });
+    signalRService?.AcceptPrivateRoomRequest({ from: username, to: message.from, content: message.content });
   }
 
   const handleReject = () => {
