@@ -1,0 +1,119 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Bert\\Manillen\\Manillen.Service\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{0AA5E0B2-D223-48FB-BDE4-BC29B814F9D8}|Manillen.Service.csproj|c:\\users\\bert\\manillen\\manillen.service\\hubs\\connectionuserhub.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0AA5E0B2-D223-48FB-BDE4-BC29B814F9D8}|Manillen.Service.csproj|solutionrelative:hubs\\connectionuserhub.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0AA5E0B2-D223-48FB-BDE4-BC29B814F9D8}|Manillen.Service.csproj|c:\\users\\bert\\manillen\\manillen.service\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0AA5E0B2-D223-48FB-BDE4-BC29B814F9D8}|Manillen.Service.csproj|solutionrelative:controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0AA5E0B2-D223-48FB-BDE4-BC29B814F9D8}|Manillen.Service.csproj|c:\\users\\bert\\manillen\\manillen.service\\services\\userconnectionservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0AA5E0B2-D223-48FB-BDE4-BC29B814F9D8}|Manillen.Service.csproj|solutionrelative:services\\userconnectionservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0AA5E0B2-D223-48FB-BDE4-BC29B814F9D8}|Manillen.Service.csproj|c:\\users\\bert\\manillen\\manillen.service\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0AA5E0B2-D223-48FB-BDE4-BC29B814F9D8}|Manillen.Service.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0AA5E0B2-D223-48FB-BDE4-BC29B814F9D8}|Manillen.Service.csproj|c:\\users\\bert\\manillen\\manillen.service\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0AA5E0B2-D223-48FB-BDE4-BC29B814F9D8}|Manillen.Service.csproj|solutionrelative:models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 4,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{13b12e3e-c1b4-4539-9371-4fe9a0d523fc}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ConnectionUserHub.cs",
+              "DocumentMoniker": "C:\\Users\\Bert\\Manillen\\Manillen.Service\\Hubs\\ConnectionUserHub.cs",
+              "RelativeDocumentMoniker": "Hubs\\ConnectionUserHub.cs",
+              "ToolTip": "C:\\Users\\Bert\\Manillen\\Manillen.Service\\Hubs\\ConnectionUserHub.cs",
+              "RelativeToolTip": "Hubs\\ConnectionUserHub.cs",
+              "ViewState": "AgIAAC4AAAAAAAAAAAAAADMAAABlAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-17T22:48:35.755Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "UserConnectionService.cs",
+              "DocumentMoniker": "C:\\Users\\Bert\\Manillen\\Manillen.Service\\Services\\UserConnectionService.cs",
+              "RelativeDocumentMoniker": "Services\\UserConnectionService.cs",
+              "ToolTip": "C:\\Users\\Bert\\Manillen\\Manillen.Service\\Services\\UserConnectionService.cs",
+              "RelativeToolTip": "Services\\UserConnectionService.cs",
+              "ViewState": "AgIAAIMAAAAAAAAAAAAAAJUAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-17T19:02:58.84Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "UserController.cs",
+              "DocumentMoniker": "C:\\Users\\Bert\\Manillen\\Manillen.Service\\Controllers\\UserController.cs",
+              "RelativeDocumentMoniker": "Controllers\\UserController.cs",
+              "ToolTip": "C:\\Users\\Bert\\Manillen\\Manillen.Service\\Controllers\\UserController.cs",
+              "RelativeToolTip": "Controllers\\UserController.cs",
+              "ViewState": "AgIAAFEAAAAAAAAAAAArwFkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-17T17:18:17.078Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "User.cs",
+              "DocumentMoniker": "C:\\Users\\Bert\\Manillen\\Manillen.Service\\Models\\User.cs",
+              "RelativeDocumentMoniker": "Models\\User.cs",
+              "ToolTip": "C:\\Users\\Bert\\Manillen\\Manillen.Service\\Models\\User.cs",
+              "RelativeToolTip": "Models\\User.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-17T17:18:08.326Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\Bert\\Manillen\\Manillen.Service\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "C:\\Users\\Bert\\Manillen\\Manillen.Service\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-17T17:15:05.466Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

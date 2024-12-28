@@ -1,0 +1,6 @@
+@Manillen.Service_HostAddress = http://localhost:5262
+
+GET {{Manillen.Service_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
