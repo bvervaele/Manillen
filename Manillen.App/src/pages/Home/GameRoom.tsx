@@ -34,11 +34,18 @@ const GameRoom: React.FC = () => {
   }
   return (
     <div>
-      <h2>Room Code: {privateRoomCode}</h2>
-      <h3>Players:</h3>
-      <ul>
+      <h2>My game</h2>
+      <div className="d-flex justify-content-between align-items-center">
+        <h3>Players:</h3>
+        <h3>Room Code: {privateRoomCode}</h3>
+      </div>
+      <ul className='list-group list-group-numbered'>
         {privateRoomUsers.map((user, index) => (
-          <li key={index}>{user}</li>
+          <li className='list-group-item d-flex justify-content-between align-items-start' key={index}>
+            <div className='ms-2 me-auto'>
+              <div className='fw-bold'>{user}</div>
+            </div>
+          </li>
         ))}
       </ul>
     </div>

@@ -264,5 +264,6 @@ $RECYCLE.BIN/
 _NCrunch*
 
 #
-Manillen.Service/.vs/
+
+.vs/
 Properties
