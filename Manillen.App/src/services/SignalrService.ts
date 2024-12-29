@@ -94,7 +94,11 @@ export class SignalRService {
     }
 
     async joinPrivateRoomRequest(message:Message){
-        console.log("test");
         return await this.signalRConnection?.invoke('JoinPrivateRoomRequest', message).catch(error => console.log(error));
+    }
+
+    async startGameRequest(message:Message){
+        console.log("start game");
+        return await this.signalRConnection?.invoke('StartRequest', message).catch(error => console.log(error));
     }
 }

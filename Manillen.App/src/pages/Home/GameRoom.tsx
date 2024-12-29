@@ -1,6 +1,7 @@
 import React, { useContext, useState } from 'react'
 import { GlobleContext } from '../../context/Context'
 import { Button } from 'react-bootstrap';
+import './GameRoom.css';
 
 const GameRoom: React.FC = () => {
   const { userState: { username }, signalRState: { signalRService, privateRoomCode, privateRoomUsers } } = useContext(GlobleContext);
@@ -17,6 +18,12 @@ const GameRoom: React.FC = () => {
     });
   };
 
+  const handleStartGame = async () => {
+    signalRService?.startGameRequest({
+      from: username, to: '', content: roomCodeInput
+    });
+  };
+
   const [roomCodeInput, setRoomCodeInput] = useState('');
   
   const inPrivateRoom = () => {
@@ -25,11 +32,19 @@ const GameRoom: React.FC = () => {
 
   if (!inPrivateRoom()) {
     return (
-      <>
-        <input type="text" value={roomCodeInput} onChange={(e) => setRoomCodeInput(e.target.value)} />
-        <Button onClick={() => handleJoinRoom()}>Join Room</Button>
+      <div className="d-flex justify-content-end align-items-center mt-3">
+        <div className="d-flex align-items-center me-3">
+          <input
+            type="text"
+            value={roomCodeInput}
+            onChange={(e) => setRoomCodeInput(e.target.value)}
+            className="form-control me-2"
+          />
+          <Button className="wide-button">Join Game</Button>
+        </div>
         <Button onClick={() => handleCreateRoom()}>Create Room</Button>
-      </>
+      </div>
+
     )
   }
   return (
@@ -48,6 +63,12 @@ const GameRoom: React.FC = () => {
           </li>
         ))}
       </ul>
+      {
+          <>
+            <Button disabled={privateRoomUsers.length !== 4} onClick={() => handleStartGame()} className="btn btn-primary float-end mt-2">Start Game</Button>
+            <div className="clearfix"></div>
+          </>
+      }
     </div>
   )
 }

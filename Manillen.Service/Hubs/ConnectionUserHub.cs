@@ -1,4 +1,5 @@
-﻿using Manillen.Service.Models.Dto;
+﻿using Manillen.Service.Models;
+using Manillen.Service.Models.Dto;
 using Manillen.Service.Services;
 using Microsoft.AspNetCore.SignalR;
 using System.Text.RegularExpressions;
@@ -85,12 +86,25 @@ namespace Manillen.Service.Hubs
         {
             if (message != null)
             {
-                await Groups.AddToGroupAsync(Context.ConnectionId, message.Content);
-                _userConnectionService.AddUserToPrivateRoom(message.Content, message.From);
-                _userConnectionService.SetOnlineUserInPrivateRoom(message.From);
-                await Clients.Client(Context.ConnectionId).SendAsync("OpenPrivateRoomRequest", message.Content);
-                DisplayOnlineUsers();
-                DisplayPrivateRoomUsers(message.Content);
+                var roomCode = message.Content;
+                var users = _userConnectionService.GetPrivateRoomUsers(roomCode);
+                if (users != null && users.Any())
+                {
+                    if (users.Count < 4)
+                    {
+                        await Groups.AddToGroupAsync(Context.ConnectionId, message.Content);
+                        _userConnectionService.AddUserToPrivateRoom(message.Content, message.From);
+                        _userConnectionService.SetOnlineUserInPrivateRoom(message.From);
+                        await Clients.Client(Context.ConnectionId).SendAsync("OpenPrivateRoomRequest", message.Content);
+                        DisplayOnlineUsers();
+                        DisplayPrivateRoomUsers(message.Content);
+                    }
+                    else
+                        await Clients.Client(Context.ConnectionId).SendAsync("RoomIsFullError", $"This room is full");
+                }
+                else
+                    await Clients.Client(Context.ConnectionId).SendAsync("NoRoomFoundError", $"No room found for the code: {roomCode}");
+                
             }
         }
 
@@ -108,12 +122,24 @@ namespace Manillen.Service.Hubs
         {
             if (message != null)
             {
-                await Groups.AddToGroupAsync(Context.ConnectionId, message.Content);
-                _userConnectionService.AddUserToPrivateRoom(message.Content, message.From);
-                _userConnectionService.SetOnlineUserInPrivateRoom(message.From);
-                await Clients.Client(Context.ConnectionId).SendAsync("OpenPrivateRoomRequest", message.Content);
-                DisplayOnlineUsers();
-                DisplayPrivateRoomUsers(message.Content);
+                var roomCode = message.Content;
+                var users = _userConnectionService.GetPrivateRoomUsers(roomCode);
+                if (users != null && users.Any())
+                {
+                    if (users.Count < 4)
+                    {
+                        await Groups.AddToGroupAsync(Context.ConnectionId, roomCode);
+                        _userConnectionService.AddUserToPrivateRoom(roomCode, message.From);
+                        _userConnectionService.SetOnlineUserInPrivateRoom(message.From);
+                        await Clients.Client(Context.ConnectionId).SendAsync("OpenPrivateRoomRequest", roomCode);
+                        DisplayOnlineUsers();
+                        DisplayPrivateRoomUsers(roomCode);
+                    }
+                    else
+                        await Clients.Client(Context.ConnectionId).SendAsync("RoomIsFullError", $"This room is full");
+                }
+                else
+                    await Clients.Client(Context.ConnectionId).SendAsync("NoRoomFoundError", $"No room found for the code: {roomCode}");
             }
         }
 
