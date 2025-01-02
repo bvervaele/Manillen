@@ -1,8 +1,6 @@
-﻿using Manillen.Service.Models;
-using Manillen.Service.Models.Dto;
+﻿using Manillen.Service.Models.Dto;
 using Manillen.Service.Services;
 using Microsoft.AspNetCore.SignalR;
-using System.Text.RegularExpressions;
 
 namespace Manillen.Service.Hubs
 {

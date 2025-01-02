@@ -264,6 +264,6 @@ $RECYCLE.BIN/
 _NCrunch*
 
 #
-
-.vs/
 Properties
+Manillen.Service/appsettings.json
+Manillen.Service/.vs/
