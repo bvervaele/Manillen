@@ -40,7 +40,7 @@ const GameRoom: React.FC = () => {
             onChange={(e) => setRoomCodeInput(e.target.value)}
             className="form-control me-2"
           />
-          <Button className="wide-button">Join Game</Button>
+          <Button className="wide-button" onClick={() => handleJoinRoom()}>Join Game</Button>
         </div>
         <Button onClick={() => handleCreateRoom()}>Create Room</Button>
       </div>
